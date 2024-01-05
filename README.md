@@ -11,6 +11,7 @@ The console is the first segment of the AirBnB project at Holberton School that 
 ## Table of Content
 * [Environment](#environment)
 * [Installation](#installation)
+* [API](#API)
 * [File Descriptions](#file-descriptions)
 * [Usage](#usage)
 * [Examples of use](#examples-of-use)
@@ -26,6 +27,12 @@ This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.
 * Access AirBnb directory: `cd AirBnB_clone`
 * Run hbnb(interactively): `./console` and enter command
 * Run hbnb(non-interactively): `echo "<command>" | ./console.py`
+
+## API
+* GET/
+* POST/
+* PUT/
+* DELETE/
 
 ## File Descriptions
 [console.py](console.py) - the console contains the entry point of the command interpreter. 
@@ -154,8 +161,7 @@ EOF  all  create  destroy  help  quit  show  update
 No known bugs at this time. 
 
 ## Authors
-Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
-Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
+Abdulqudus Oladega - [Github](https://github.com/odoublea) / [Linkedin](https://linkedin.com/in/abdulqudus-oladega)  
 
 Second part of Airbnb: Joann Vuong
 ## License
