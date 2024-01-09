@@ -1,3 +1,6 @@
+"""Creates and handles all RestFul API actions for Review objects
+"""
+
 from api.v1.app import app_views
 from flask import jsonify, request
 
