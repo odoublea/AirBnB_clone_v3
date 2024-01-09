@@ -8,6 +8,7 @@ from models import storage
 from models.amenity import Amenity
 from models.place import Place
 
+
 @app_views.route('/places/<place_id>/amenities')
 def amenities(place_id):
     """Retrieves the list of all Amenity objects of a Place"""
@@ -17,8 +18,9 @@ def amenities(place_id):
     amenities = [amenity.to_dict() for amenity in place.amenities]
     return jsonify(amenities)
 
+
 @app_views.route('/places/<place_id>/amenities/<amenity_id>',
-                    methods=['DELETE'])
+                 methods=['DELETE'])
 def delete_amenity(place_id, amenity_id):
     """Deletes a Amenity objects"""
     place = storage.get(Place, place_id)
@@ -33,8 +35,9 @@ def delete_amenity(place_id, amenity_id):
     storage.save()
     return jsonify({}), 200
 
+
 @app_views.route('/places/<place_id>/amenities/<amenity_id>',
-                    methods=['POST'])
+                 methods=['POST'])
 def create_amenity(place_id, amenity_id):
     """Creates a Amenity objects"""
     place = storage.get(Place, place_id)

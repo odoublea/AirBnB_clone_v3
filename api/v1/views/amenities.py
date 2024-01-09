@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Amenity objects that handles all default 
+"""Amenity objects that handles all default
 RestFul API actions""
 """
 
@@ -9,11 +9,14 @@ from flask import jsonify, request
 from models import storage
 from models.amenity import Amenity
 
+
 @app_views.route('/amenities')
 def amenities():
     """Retrieves the list of all Amenity objects"""
-    amenities = [amenity.to_dict() for amenity in storage.all(Amenity).values()]
+    amenities = [amenity.to_dict() for amenity in
+                 storage.all(Amenity).values()]
     return jsonify(amenities)
+
 
 @app_views.route('/amenities/<amenity_id>')
 def amenity(amenity_id):
@@ -22,6 +25,7 @@ def amenity(amenity_id):
     if amenity is None:
         return jsonify({"error": "Not found"}), 404
     return jsonify(amenity.to_dict())
+
 
 @app_views.route('/amenities/<amenity_id>', methods=['DELETE'])
 def delete_amenity(amenity_id):
@@ -32,6 +36,7 @@ def delete_amenity(amenity_id):
     storage.delete(amenity)
     storage.save()
     return jsonify({}), 200
+
 
 @app_views.route('/amenities', methods=['POST'])
 def create_amenity():
@@ -44,6 +49,7 @@ def create_amenity():
     amenity = Amenity(**amenity_dict)
     amenity.save()
     return jsonify(amenity.to_dict()), 201
+
 
 @app_views.route('/amenities/<amenity_id>', methods=['PUT'])
 def update_amenity(amenity_id):

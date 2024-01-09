@@ -9,11 +9,13 @@ from flask import jsonify, request
 from models import storage
 from models.user import User
 
+
 @app_views.route('/users')
 def users():
     """Retrieves the list of all User objects"""
     users = [user.to_dict() for user in storage.all(User).values()]
     return jsonify(users)
+
 
 @app_views.route('/users/<user_id>')
 def user(user_id):
@@ -22,6 +24,7 @@ def user(user_id):
     if user is None:
         return jsonify({"error": "Not found"}), 404
     return jsonify(user.to_dict())
+
 
 @app_views.route('/users/<user_id>', methods=['DELETE'])
 def delete_user(user_id):
@@ -32,6 +35,7 @@ def delete_user(user_id):
     storage.delete(user)
     storage.save()
     return jsonify({}), 200
+
 
 @app_views.route('/users', methods=['POST'])
 def create_user():
@@ -46,6 +50,7 @@ def create_user():
     user = User(**user_dict)
     user.save()
     return jsonify(user.to_dict()), 201
+
 
 @app_views.route('/users/<user_id>', methods=['PUT'])
 def update_user(user_id):

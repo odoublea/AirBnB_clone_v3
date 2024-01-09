@@ -12,10 +12,12 @@ from models.place import Place
 from models.review import Review
 from models.user import User
 
+
 @app_views.route('/status')
 def status():
     """Returns a JSON string"""
     return jsonify({"status": "OK"})
+
 
 @app_views.route('/stats')
 def count():

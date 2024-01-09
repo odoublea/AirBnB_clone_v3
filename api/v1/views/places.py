@@ -10,6 +10,7 @@ from models import storage
 from models.place import Place
 from models.city import City
 
+
 @app_views.route('/cities/<city_id>/places')
 def places(city_id):
     """Retrieves the list of all Place objects of a City"""
@@ -19,6 +20,7 @@ def places(city_id):
     places = [place.to_dict() for place in city.places]
     return jsonify(places)
 
+
 @app_views.route('/places/<place_id>')
 def place(place_id):
     """Retrieves a Place objects"""
@@ -26,6 +28,7 @@ def place(place_id):
     if place is None:
         return jsonify({"error": "Not found"}), 404
     return jsonify(place.to_dict())
+
 
 @app_views.route('/places/<place_id>', methods=['DELETE'])
 def delete_place(place_id):
@@ -36,6 +39,7 @@ def delete_place(place_id):
     storage.delete(place)
     storage.save()
     return jsonify({}), 200
+
 
 @app_views.route('/cities/<city_id>/places', methods=['POST'])
 def create_place(city_id):
@@ -56,6 +60,7 @@ def create_place(city_id):
     place = Place(**place_dict)
     place.save()
     return jsonify(place.to_dict()), 201
+
 
 @app_views.route('/places/<place_id>', methods=['PUT'])
 def update_place(place_id):

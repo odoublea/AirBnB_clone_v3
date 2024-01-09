@@ -7,12 +7,14 @@ from flask import jsonify, request
 from models import storage
 from models.state import State
 
+
 @app_views.route('/states')
 def states():
     """Retrieves the list of all State objects"""
     states = storage.all(State)
     states = [state.to_dict() for state in states.values()]
     return jsonify(states)
+
 
 @app_views.route('/states/<state_id>')
 def state(state_id):
@@ -21,6 +23,7 @@ def state(state_id):
     if state is None:
         return jsonify({"error": "Not found"}), 404
     return jsonify(state.to_dict())
+
 
 @app_views.route('/states/<state_id>', methods=['DELETE'])
 def delete_state(state_id):
@@ -31,6 +34,7 @@ def delete_state(state_id):
     storage.delete(state)
     storage.save()
     return jsonify({}), 200
+
 
 @app_views.route('/states', methods=['POST'])
 def create_state():
@@ -43,6 +47,7 @@ def create_state():
     state = State(**state_dict)
     state.save()
     return jsonify(state.to_dict()), 201
+
 
 @app_views.route('/states/<state_id>', methods=['PUT'])
 def update_state(state_id):
