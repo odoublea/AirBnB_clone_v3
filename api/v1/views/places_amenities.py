@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Creates a new view for Amenity objects"""
 
 from api.v1.views import app_views

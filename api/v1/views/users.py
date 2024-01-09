@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """ Creates a new view for User objects that handles all
 default RestFul API actions
 """

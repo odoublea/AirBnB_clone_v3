@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Creates and handles all RestFul API actions for Review objects
 """
 

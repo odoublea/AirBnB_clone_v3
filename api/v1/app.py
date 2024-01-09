@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Flask application set up"""""
 
 from api.v1.views import app_views

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """Amenity objects that handles all default 
 RestFul API actions""
 """
