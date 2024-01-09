@@ -1,3 +1,7 @@
+""" Creates a new view for User objects that handles all
+default RestFul API actions
+"""
+
 from api.v1.views import app_views
 from flask import jsonify, request
 
@@ -52,7 +56,7 @@ def update_user(user_id):
     if user_dict is None:
         return jsonify({"error": "Not a JSON"}), 400
     for key, value in user_dict.items():
-        if key not in ["id", "created_at", "updated_at", "email"]:
+        if key not in ["id", "email", "created_at", "updated_at",]:
             setattr(user, key, value)
     user.save()
     return jsonify(user.to_dict()), 200
