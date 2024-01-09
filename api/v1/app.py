@@ -15,11 +15,13 @@ app.register_blueprint(app_views)
 
 @app.teardown_appcontext
 def teardown_db(exception):
+    """Closes the storage on teardown"""
     storage.close()
 
 
 @app.errorhandler(404)
 def not_found(error):
+    """Handles 404 error"""
     return jsonify({"error": "Not found"}), 404
 
 
