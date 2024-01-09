@@ -158,3 +158,17 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(old_created_at, new_created_at)
         self.assertTrue(mock_storage.new.called)
         self.assertTrue(mock_storage.save.called)
+
+    def test_kwargs(self):
+        """Test that an object is correctly created from kwargs"""
+        bm = BaseModel()
+        bm.name = "Holberton"
+        bm.my_number = 89
+        bm.save()
+        bm_json = bm.to_dict()
+        bm_new = BaseModel(**bm_json)
+        self.assertEqual(bm_new.to_dict(), bm.to_dict())
+        self.assertIsNot(bm_new, bm)
+        
+    
+    
